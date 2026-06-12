@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="act_report_carbone_view" model="ir.ui.view">
+        <field name="name">act_report_carbone_view</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="attributes">
+                <attribute name="create">False</attribute>
+                <attribute name="class">carbone_embedded_view</attribute>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_carbon_print_by_action_window"
+                    string="Test generation"
+                    type="object"
+                    icon="fa-file-text"
+                    invisible="report_type != 'carbone' or template_id == False"
+                    help="Test generation without leaving this form."
+                    class="oe_stat_button"
+                />
+                <button
+                    name="action_download_carbone_documentation"
+                    string="Documentation"
+                    type="object"
+                    icon="fa-file-pdf-o"
+                    invisible="report_type != 'carbone'"
+                    class="btn-secondary carbon_button_res_config"
+                />
+                <button
+                    name="action_refresh_carbone_studio"
+                    string="Refresh Studio"
+                    type="object"
+                    icon="fa-gears"
+                    invisible="report_type != 'carbone'"
+                    class="oe_stat_button"
+                />
+            </xpath>
+            <xpath expr="//field[@name='report_type']" position="after">
+                <p invisible="is_valid_template_id == True">
+                    Please note that you have copied the version ID and not the template ID.
+                </p>
+                <!--                <p>Attention, vous avez copié le version ID et non le template ID </p>-->
+                <field
+                    name="template_id"
+                    invisible="report_type != 'carbone'"
+                    decoration-danger="(not file_extension or not is_valid_template_id) and template_id"
+                />
+                <field name="is_valid_template_id" invisible="True"/>
+                <field name="file_extension" invisible="True"/>
+                <field name="lang_ids" widget="many2many_tags" invisible="report_type != 'carbone'"/>
+                <field
+                    name="currency_id"
+                    invisible="report_type != 'carbone'"
+                    options="{'no_create': True, 'no_open': True}"
+                />
+                <field
+                    name="export_model"
+                    invisible="report_type != 'carbone'"
+                    domain="[('resource', '=', model)]"
+                    options="{'no_create': True}"
+                />
+                <field name="hide_create_update_button" invisible="1"/>
+                <field name="m2o_reference_model" invisible="1"/>
+                <field name="m2o_reference_id" options="{'no_create': True}" invisible="report_type != 'carbone'"/>
+                <button
+                    name="button_create_update_ir_export"
+                    type="object"
+                    string="Create/update export template"
+                    invisible="hide_create_update_button"
+                />
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field
+                    name="input_user_model_id"
+                    options="{'no_create': True, 'no_open': True}"
+                    context="{'carbone_report_display_name' : True}"
+                    invisible="report_type != 'carbone'"
+                    required="True"
+                />
+            </xpath>
+            <xpath expr="//field[@name='report_type']" position="attributes">
+                <attribute name="invisible">report_type == 'carbone'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='model']" position="attributes">
+                <attribute name="invisible">report_type == 'carbone'</attribute>
+            </xpath>
+            <xpath expr="//field[@name='report_name']" position="replace"/>
+            <xpath expr="//field[@name='print_report_name']" position="attributes">
+                <attribute name="placeholder">"File name"</attribute>
+            </xpath>
+            <xpath expr="//field[@name='print_report_name']" position="after">
+                <field name="report_output_file_extension" invisible="report_type != 'carbone'"/>
+            </xpath>
+            <xpath expr="//page[@name='advanced']//group" position="inside">
+                <field name="use_complement"/>
+            </xpath>
+            <xpath expr="//page[@name='advanced']" position="after">
+                <page name="translations" string="Translations" invisible="report_type != 'carbone'">
+                    <group>
+                        <field name="partner_lang_path" placeholder="partner_id.lang"/>
+                    </group>
+                    <field name="carbone_translate_ids">
+                        <list>
+                            <field name="lang_id"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+            <xpath expr="//sheet" position="after">
+                <carbone-studio/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="act_report_carbone_xml_view_tree" model="ir.ui.view">
+        <field name="name">act_report_carbone_xml_view_tree</field>
+        <field name="model">ir.actions.report</field>
+        <field name="inherit_id" ref="base.act_report_xml_view_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//list" position="attributes">
+                <attribute name="create">False</attribute>
+                <attribute name="js_class">carbone_report_button_in_tree</attribute>
+            </xpath>
+            <xpath expr="//field[@name='report_name']" position="replace"/>
+            <xpath expr="//field[@name='type']" position="replace"/>
+            <xpath expr="//field[@name='report_type']" position="replace">
+                <field name="lang_ids" widget="many2many_tags"/>
+                <field name="is_available_in_print_action"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

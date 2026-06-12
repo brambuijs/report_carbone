@@ -1,0 +1,42 @@
+From d0fea636b3580ceed880cbeacbd718589832b8d7 Mon Sep 17 00:00:00 2001
+From: Bram Buijs <b.buijs@bb-open.com>
+Date: Thu, 11 Jun 2026 17:45:44 +0200
+Subject: [PATCH 2/6] =?UTF-8?q?fix(report=5Fcarbone):=20stateless=20carbon?=
+ =?UTF-8?q?e-ee=20=E2=80=94=20geen=20/templates-endpoint?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+get_extension_file_from_api gebruikt /templates (search/versioning) → bestaat
+niet in stateless mode (error-string code w130) → res.get() AttributeError bij
+template-ID-zetten. Nu default .docx als res geen dict is.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ report_carbone/models/base/ir_actions_report.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/report_carbone/models/base/ir_actions_report.py b/report_carbone/models/base/ir_actions_report.py
+index 9452e63..57c3aa1 100644
+--- a/report_carbone/models/base/ir_actions_report.py
++++ b/report_carbone/models/base/ir_actions_report.py
+@@ -859,9 +859,15 @@ class IrActionsReportCarbone(models.Model):
+         }
+         res = self.call_carbone_endpoint(endpoint, params, raise_error)
+ 
++        # BB Open patch: on-premise carbone-ee draait stateless (geen DB) → het
++        # /templates-endpoint bestaat niet (error-string, code w130) i.p.v. een
++        # JSON-dict. Default dan naar .docx (WAF-templates zijn .docx).
++        if not isinstance(res, dict):
++            return ".docx"
++
+         data_list = res.get("data")
+         if not data_list:
+-            return False
++            return ".docx"
+ 
+         return data_list[0].get("type")
+ 
+-- 
+2.54.0
+

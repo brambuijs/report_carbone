@@ -1,0 +1,47 @@
+carbone-studio {
+    height: 100%;
+    width: 100%;
+}
+
+.o_settings_carbone_container {
+    display: flex;
+    flex-direction: column;
+    width: 100% !important;
+}
+
+.o_field_row {
+    display: flex;
+    white-space: normal;
+    margin-bottom: 0.25rem;
+    overflow: visible;
+}
+
+.o_form_label_fixed {
+    min-width: 200px;
+    text-align: left;
+    font-weight: 400 !important;
+    flex: 1;
+    margin: 0;
+}
+
+.o_field_aligned {
+    flex: 1;
+    padding-top: 0.125rem;
+}
+
+.o_tooltip_icon {
+    font-size: 0.8rem;
+    margin-left: 0.5rem;
+    flex-shrink: 0;
+    opacity: 0.7;
+    display: flex;
+    align-items: center;
+    transition: opacity 0.2s ease;
+}
+
+.o_tooltip_icon:hover {
+    opacity: 1;
+}
+.carbone-link-website {
+    text-align: left;
+}

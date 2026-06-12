@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="act_carbone_print_by_action_view_form" model="ir.ui.view">
+        <field name="name">carbone.print_by_action.form</field>
+        <field name="model">carbone.print_by_action</field>
+        <field name="arch" type="xml">
+            <form string="Test generation">
+                <group>
+                    <field name="name"/>
+                    <field name="lang_id" options="{'no_open' : True}"/>
+                    <field name="tz"/>
+                    <field name="currency_id" options="{'no_create': True, 'no_open': True}"/>
+                    <field name="id_object"/>
+                </group>
+                <footer>
+                    <button
+                        icon="fa-file-text"
+                        name="to_print"
+                        string="Print"
+                        type="object"
+                        default_focus="1"
+                        class="oe_highlight"
+                    />
+                    <button special="cancel" string="Close" type="object" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

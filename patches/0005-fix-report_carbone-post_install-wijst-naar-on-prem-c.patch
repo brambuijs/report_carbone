@@ -1,0 +1,38 @@
+From f91353a5722303247d44bfff623eaa637f7a04ee Mon Sep 17 00:00:00 2001
+From: Bram Buijs <b.buijs@bb-open.com>
+Date: Fri, 12 Jun 2026 09:58:27 +0200
+Subject: [PATCH 5/6] fix(report_carbone): post_install wijst naar on-prem
+ carbone i.p.v. cloud
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+API_REPORT_URL (carbone_studio_url-default) stond op api.carbone.io → een
+reinstall zou studio-origin + server-render terug naar de cloud zetten ("Invalid
+JWT audience" + lege studio). Voor de WAF-only on-prem setup → carbone-wearefrank.
+Studio-JS blijft van de publieke CDN (5.1.1, self-contained).
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ report_carbone/post_install.py | 7 ++++++-
+ 1 file changed, 6 insertions(+), 1 deletion(-)
+
+diff --git a/report_carbone/post_install.py b/report_carbone/post_install.py
+index a8863b3..91ea734 100644
+--- a/report_carbone/post_install.py
++++ b/report_carbone/post_install.py
+@@ -1,5 +1,10 @@
++# BB Open: report_carbone draait WAF-only tegen de self-hosted carbone-ee.
++# Studio-JS blijft van de publieke CDN (self-contained, geen auth/CORP-issues);
++# alleen origin/render wijzen naar onze on-prem carbone (browser-bereikbaar +
++# server-side hairpin). Cloud-default (api.carbone.io) zou render naar de cloud
++# lekken → "Invalid JWT audience" + lege studio. NIET terugzetten naar cloud.
+ STUDIO_JS_URL = "https://bin.carbone.io/studio/5.1.1/carbone-studio.min.js"
+-API_REPORT_URL = "https://api.carbone.io"
++API_REPORT_URL = "https://carbone-wearefrank.bb-open.com"
+ 
+ 
+ def set_res_config_settings(env):
+-- 
+2.54.0
+

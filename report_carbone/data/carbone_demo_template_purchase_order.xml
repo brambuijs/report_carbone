@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_carbone_demo_purchase_order" model="ir.attachment">
+        <field name="name">Demo_template_purchase_order.odt</field>
+        <field name="datas" type="base64" file="report_carbone/data/demo_template_purchase_order.odt"/>
+        <field name="public">True</field>
+    </record>
+</odoo>

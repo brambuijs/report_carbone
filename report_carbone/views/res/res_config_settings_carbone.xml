@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_open_carbone_account_website" model="ir.actions.act_url">
+        <field name="name">Open carbone account login page</field>
+        <field name="url">https://account.carbone.io/login</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="res_config_settings_view_form_carbone_inherit" model="ir.ui.view">
+        <field name="name">res_config_settings_view_form_carbone_inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="priority" eval="0"/>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <app
+                    data-string="Carbone.io"
+                    string="Carbone.io Integration"
+                    name="carbone_io_integration"
+                    logo="/report_carbone/static/description/icon.png"
+                >
+                    <block title="Carbone.io integration" name="carbone_integration">
+                        <div class="content-group mt16">
+                            <button
+                                name="action_download_carbone_documentation"
+                                string="Documentation"
+                                type="object"
+                                icon="fa-file-pdf-o"
+                                class="btn-secondary me-2"
+                            />
+                            <button
+                                name="action_download_carbone_file_sample"
+                                string="Report file example"
+                                type="object"
+                                icon="fa-file-word-o"
+                                class="btn-secondary"
+                            />
+                        </div>
+                        <setting id="carbone" help="Add the API key to print reports easily with Carbone.">
+                            <span class="o_form_label">Carbone.io</span>
+                            <div id="carbone_desc" class="text-muted">
+                                Add the API key to print reports easily with Carbone.
+                                <a
+                                    href="https://carbone.io/documentation/design/overview/getting-started.html"
+                                    title="Documentation Design"
+                                    class="o_doc_link"
+                                    target="_blank"
+                                    id="carbone_link_to_doc"
+                                >
+                                    Link to Carbone design documentation
+                                </a>
+                            </div>
+                        </setting>
+                        <button
+                            name="open_ir_actions_reports"
+                            icon="oi-arrow-right"
+                            type="object"
+                            string="Manage Carbone Reports"
+                            class="btn-link"
+                        />
+                        <div class="content-group">
+                            <div class="mt16 text-warning">
+                                <strong>Save</strong>
+                                this page and come back here to set up the feature.
+                            </div>
+                        </div>
+                        <button
+                            name="%(action_open_carbone_account_website)d"
+                            class="carbone-link-website btn-link"
+                            icon="oi-arrow-right"
+                            string="Create a Carbone Account"
+                            type="action"
+                            invisible="prod_api_key or stage_api_key"
+                        />
+                        <setting string="API Keys">
+                            <div class="o_settings_carbone_container">
+                                <div class="o_field_row">
+                                    <label for="prod_api_key" class="o_form_label_fixed"/>
+                                    <field name="prod_api_key" class="o_field_aligned"/>
+                                </div>
+                                <div class="o_field_row">
+                                    <label for="stage_api_key" class="o_form_label_fixed"/>
+                                    <field name="stage_api_key" class="o_field_aligned"/>
+                                </div>
+                                <div class="o_field_row">
+                                    <label for="is_stage_mode" class="o_form_label_fixed"/>
+                                    <field name="is_stage_mode" class="o_field_aligned"/>
+                                </div>
+                                <div class="text-muted">
+                                    In test mode, printed reports will have a watermark, and newly created reports
+                                    will be deleted after 30 days.
+                                </div>
+                                <div class="o_field_row">
+                                    <label for="carbone_studio_url" class="o_form_label_fixed"/>
+                                    <field name="carbone_studio_url" class="o_field_aligned"/>
+                                </div>
+                                <div class="o_field_row">
+                                    <label for="carbone_js_file_url" class="o_form_label_fixed"/>
+                                    <field name="carbone_js_file_url" class="o_field_aligned"/>
+                                </div>
+                            </div>
+                        </setting>
+                    </block>
+                </app>
+            </xpath>
+        </field>
+    </record>
+</odoo>

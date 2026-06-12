@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_carbone_report_template_tree_all" model="ir.actions.act_window">
+        <field name="name">Printing actions</field>
+        <field name="res_model">ir.actions.report</field>
+        <field name="path">report-carbone</field>
+        <field name="view_mode">form,list</field>
+        <field name="view_id" ref="report_carbone.act_report_carbone_xml_view_tree"/>
+        <field name="search_view_id" ref="base.act_report_xml_search_view"/>
+        <field name="domain">[("report_type", "=", "carbone")]</field>
+        <field name="context">{'default_report_type': 'carbone'}</field>
+    </record>
+
+    <menuitem
+        id="carbone_report_menu_root"
+        name="Document Generation"
+        web_icon="report_carbone,static/description/icon.png"
+        sequence="400"
+        groups="report_carbone.group_report_carbone_viewer"
+    />
+
+    <menuitem
+        id="menu_ir_action_report_settings"
+        parent="report_carbone.carbone_report_menu_root"
+        name="By Carbone.io"
+        sequence="1"
+        action="report_carbone.action_carbone_report_template_tree_all"
+        groups="report_carbone.group_report_carbone_viewer"
+    />
+</odoo>

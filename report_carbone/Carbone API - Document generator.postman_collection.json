@@ -1,0 +1,1426 @@
+{
+    "info": {
+        "_postman_id": "a5c8d56e-0e95-4bb9-913b-8edf8a7142d6",
+        "name": "Carbone API - Document generator",
+        "description": "## About Carbone\n\nUniversal templating engine to generate reports, invoices, spreadsheets,  \ncontracts and more! Create templates with your favourite text editor,  \nand add dynamic content with Carbone tags (text, colours, images,  \ngraphs). Anybody can design beautiful documents, not only developers.  \nSupported documents: PDF, DOCX, XLSX, ODT, ODS, PPTX, ODP, XML, HTML,  \nIDML, JPEG, PNG, EPUB, TXT. Learn more: [https://carbone.io.](https://carbone.io.Get)\n\n<img src=\"https://content.pstmn.io/d9196e22-54a7-4897-8277-eef211eb0f48/MjAyMi1sYXVuY2gtZXhhbXBsZXMtMS40LnBuZw==\" alt=\"Left%20document:%20real%20estate%20document%20/%20Center:%20Server%20invoice%20/%20Right:%20Shipping%20label\">\n\n### Get Started\n\nThe Postman collection is used for requesting:\n\n- Carbone Cloud API: find your API key on your [Carbone account](https://account.carbone.io). Home page > Copy the `production` or `testing` API key.\n- Carbone On-premise: Update the `Server URL` on the API specification.\n    \n\n##### Useful links:\n\n- [API Flow](https://carbone.io/api-reference.html#quickstart-api-flow)\n- [Quickstart with Carbone Cloud API](https://carbone.io/documentation.html#quickstart-carbone-cloud-api)\n- [Integration / SDKs](https://carbone.io/api-reference.html#api-integration)\n- [Generated document storage](https://carbone.io/api-reference.html#report-storage)\n- [Request timeout](https://carbone.io/api-reference.html#api-timeout)\n    \n\n### Highlights\n\n- **✅ Extremely simple** : Create templates with LibreOffice™, Google Docs, Microsoft Office™, TinyMCE, CKEditor, ...\n- 🎨 **Unlimited design** : The limit is your document editor: pagination, headers, footers, tables...\n- 📝 **Convert documents** : thanks to the integrated document converter (DOCX to PDF, CSV to XLSX, PPTX to PDF, XLSX to PDF, HTML to PDF, XML to PDF, ODT to PDF, ODS to PDF, ODT to DOCX, ODS to XLSX, DOCX to JPEG, DOCX to PNG, ODT to JPEG, DOCX to PNG)\n- 📐 **Unique template engine** : Insert Carbone placeholders `{d.companyName}` directly in your document\n- ⭐️ **Flexible** : Use any XML documents as a template: docx, odt, ods, xlsx, html, pptx, odp, custom xml files...\n- 🚀 **Future-proof** : A powerful XML-agnostic algorithm understands what to do without knowing XML document specifications\n- 🌈 **Multilingual** : One template, multiple languages. Update translation files automatically\n- 💎 **Format data** : Use built-in date and number formatters\n- 🏎 **Fast** : Optimized code generation for each report\n    \n\n### Support\n\nEmail: [support@carbone.io](https://mailto:support@carbone.io)  \nA priority live support is available.\n\n### Document Examples\n\n<img src=\"https://content.pstmn.io/c1da6312-8a12-49b3-a4b7-edc2918adcd3/MjAyMi1sYXVuY2gtZXhhbXBsZXMtMi5wbmc=\" alt=\"Left:%20Security%20report%20/%20Center:%20Clinical%20test%20results%20/%20Right:%20Human%20resources%20review\">\n\n<img src=\"https://content.pstmn.io/e1edbac0-080d-4ae6-be85-eb253fd950aa/MjAyMi1sYXVuY2gtZXhhbXBsZXMtMy5wbmc=\" alt=\"Left:%20Graduation%20program%20/%20Center:%20Medical%20prescription%20/%20Right:%20Construction%20and%20renovation%20report\">\n\nA non-exhaustive list of things you can create with Carbone:  \n\\- Invoices and quotes  \n\\- Reports and whitepapers  \n\\- Government Forms  \n\\- Financial reports  \n\\- Data analysis sheets  \n\\- Letters and memos  \n\\- Proposals  \n\\- Spreadsheets  \n\\- Presentations  \n\\- Contracts and Agreements  \n\\- Employee Manuals and Handbooks  \n\\- Financial Statements  \n\\- Project Plans and Timelines  \n\\- and more!!",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+        "_exporter_id": "26037004"
+    },
+    "item": [
+        {
+            "name": "template",
+            "item": [
+                {
+                    "name": "Upload a template.",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "(Required) Carbone version",
+                                "key": "carbone-version",
+                                "value": "4"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "formdata",
+                            "formdata": [
+                                {
+                                    "key": "template",
+                                    "description": "(Required) ",
+                                    "type": "file",
+                                    "src": []
+                                }
+                            ]
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/template",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["template"]
+                        },
+                        "description": "Documentation: https://carbone.io/api-reference.html#add-templates"
+                    },
+                    "response": [
+                        {
+                            "name": "On success, the `template ID` is returned.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "template",
+                                            "value": "<string>",
+                                            "description": "(Required) ",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "https://api.carbone.io/template",
+                                    "protocol": "https",
+                                    "host": ["api", "carbone", "io"],
+                                    "path": ["template"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n  \"success\": \"<boolean>\",\n  \"data\": {\n    \"templateId\": \"<string>\"\n  }\n}"
+                        },
+                        {
+                            "name": "The body request type is not correct, it must be a FormData or a JSON. The `Content-type` header must be either `application/json` or `multipart/form-data`",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "template",
+                                            "value": "<string>",
+                                            "description": "(Required) ",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/template",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template"]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Unauthorized, please provide a correct API key on the `Authorization ` header. The API key is available on your Carbone account: https://account.carbone.io",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "template",
+                                            "value": "<string>",
+                                            "description": "(Required) ",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/template",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template"]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Template format not supported, it must be an XML-based document: DOCX, XLSX, PPTX, ODT, ODS, ODP, ODG, XHTML, IDML, HTML or an XML file",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "template",
+                                            "value": "<string>",
+                                            "description": "(Required) ",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/template",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template"]
+                                }
+                            },
+                            "status": "Unsupported Media Type",
+                            "code": 415,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The `template` field is empty on the body request",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "multipart/form-data"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "formdata",
+                                    "formdata": [
+                                        {
+                                            "key": "template",
+                                            "value": "<string>",
+                                            "description": "(Required) ",
+                                            "type": "text"
+                                        }
+                                    ]
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/template",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template"]
+                                }
+                            },
+                            "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Download a template from a template ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "(Required) Carbone version",
+                                "key": "carbone-version",
+                                "value": "4"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/template/:templateId",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["template", ":templateId"],
+                            "variable": [
+                                {
+                                    "key": "templateId",
+                                    "value": "<string>"
+                                }
+                            ]
+                        },
+                        "description": "Documentation: https://carbone.io/api-reference.html#get-templates"
+                    },
+                    "response": [
+                        {
+                            "name": "stream of the file content",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "https://api.carbone.io/template/:templateId",
+                                    "protocol": "https",
+                                    "host": ["api", "carbone", "io"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "content-disposition",
+                                    "value": "<string>",
+                                    "description": {
+                                        "content": "Template name, for instance: 'filename=\"{templateid}.docx\"'.",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "<string>",
+                                    "description": {
+                                        "content": "File type",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ],
+                            "cookie": [],
+                            "body": ""
+                        },
+                        {
+                            "name": "The `template ID` is not valid",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Unauthorized, please provide a correct API key on the `Authorization ` header. The API key is available on your Carbone account: https://account.carbone.io",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The template is not found",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Delete a template from a template ID",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "description": "(Required) Carbone version",
+                                "key": "carbone-version",
+                                "value": "4"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/template/:templateId",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["template", ":templateId"],
+                            "variable": [
+                                {
+                                    "key": "templateId",
+                                    "value": "<string>"
+                                }
+                            ]
+                        },
+                        "description": "Documentation: https://carbone.io/api-reference.html#delete-templates"
+                    },
+                    "response": [
+                        {
+                            "name": "The template is deleted",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "https://api.carbone.io/template/:templateId",
+                                    "protocol": "https",
+                                    "host": ["api", "carbone", "io"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n  \"success\": true\n}"
+                        },
+                        {
+                            "name": "The `template ID` is not valid",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Unauthorized, please provide a correct API key on the `Authorization ` header. The API key is available on your Carbone account: https://account.carbone.io",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The template is not found",
+                            "originalRequest": {
+                                "method": "DELETE",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/template/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["template", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "render",
+            "item": [
+                {
+                    "name": "Generate a document from a template ID, and a JSON data-set",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "description": "(Required) Carbone version",
+                                "key": "carbone-version",
+                                "value": "4"
+                            },
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n  \"data\": {},\n  \"convertTo\": \"pdf\",\n  \"timezone\": \"Europe/Paris\",\n  \"lang\": \"en\",\n  \"complement\": {},\n  \"variableStr\": \"\",\n  \"reportName\": \"document\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"\",\n  \"currencyTarget\": \"\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"\"\n}",
+                            "options": {
+                                "raw": {
+                                    "headerFamily": "json",
+                                    "language": "json"
+                                }
+                            }
+                        },
+                        "url": {
+                            "raw": "{{baseUrl}}/render/:templateId",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["render", ":templateId"],
+                            "variable": [
+                                {
+                                    "key": "templateId",
+                                    "value": "<string>"
+                                }
+                            ]
+                        },
+                        "description": "Documentation: https://carbone.io/api-reference.html#render-reports"
+                    },
+                    "response": [
+                        {
+                            "name": "On success, a `render ID` is returned, a unique identifier for the generated document.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "https://api.carbone.io/render/:templateId",
+                                    "protocol": "https",
+                                    "host": ["api", "carbone", "io"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n  \"success\": true,\n  \"data\": {\n    \"renderId\": \"<string>\"\n  }\n}"
+                        },
+                        {
+                            "name": "The body request type is not correct, it must be a JSON type and the `Content-type` header must be `application/json`",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Unauthorized, please provide a correct API key on the `Authorization ` header. The API key is available on your Carbone account: https://account.carbone.io",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The template is not found",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The 'data' property is missing on the body request.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                            "code": 422,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Something went wrong when merging the JSON data-set into the template. The design of the template has an issue.",
+                            "originalRequest": {
+                                "method": "POST",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Content-Type",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    },
+                                    {
+                                        "description": "Added as a part of security scheme: bearer",
+                                        "key": "Authorization",
+                                        "value": "Bearer <token>"
+                                    }
+                                ],
+                                "body": {
+                                    "mode": "raw",
+                                    "raw": "{\n  \"data\": {},\n  \"convertTo\": \"<string>\",\n  \"timezone\": \"<string>\",\n  \"lang\": \"<string>\",\n  \"complement\": {},\n  \"variableStr\": \"<string>\",\n  \"reportName\": \"<string>\",\n  \"enum\": {},\n  \"translations\": {},\n  \"currencySource\": \"<string>\",\n  \"currencyTarget\": \"<string>\",\n  \"currencyRates\": {},\n  \"hardRefresh\": \"<boolean>\"\n}",
+                                    "options": {
+                                        "raw": {
+                                            "headerFamily": "json",
+                                            "language": "json"
+                                        }
+                                    }
+                                },
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:templateId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":templateId"],
+                                    "variable": [
+                                        {
+                                            "key": "templateId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        }
+                    ]
+                },
+                {
+                    "name": "Retreive a generated document from a render ID.",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "description": "(Required) Carbone version",
+                                "key": "carbone-version",
+                                "value": "4"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/render/:renderId",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["render", ":renderId"],
+                            "variable": [
+                                {
+                                    "key": "renderId",
+                                    "value": "<string>"
+                                }
+                            ]
+                        },
+                        "description": "Documentation: https://carbone.io/api-reference.html#download-rendered-reports"
+                    },
+                    "response": [
+                        {
+                            "name": "Stream of the generated document",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "https://api.carbone.io/render/:renderId",
+                                    "protocol": "https",
+                                    "host": ["api", "carbone", "io"],
+                                    "path": ["render", ":renderId"],
+                                    "variable": [
+                                        {
+                                            "key": "renderId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "text",
+                            "header": [
+                                {
+                                    "key": "content-disposition",
+                                    "value": "<string>",
+                                    "description": {
+                                        "content": "File name, for instance: 'filename=\"report.pdf\"'. The default value is 'report'. The file name can be changed dynamically thanks to the `reportName` option when generating a document with `POST /render/:templateId`.",
+                                        "type": "text/plain"
+                                    }
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "<string>",
+                                    "description": {
+                                        "content": "File type",
+                                        "type": "text/plain"
+                                    }
+                                }
+                            ],
+                            "cookie": [],
+                            "body": ""
+                        },
+                        {
+                            "name": "The `render ID` is not valid",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:renderId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":renderId"],
+                                    "variable": [
+                                        {
+                                            "key": "renderId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Bad Request",
+                            "code": 400,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "Unauthorized, please provide a correct API key on the `Authorization ` header. The API key is available on your Carbone account: https://account.carbone.io",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:renderId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":renderId"],
+                                    "variable": [
+                                        {
+                                            "key": "renderId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Unauthorized",
+                            "code": 401,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        },
+                        {
+                            "name": "The file does not exist.",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "description": "(Required) Carbone version",
+                                        "key": "carbone-version",
+                                        "value": "4"
+                                    },
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/render/:renderId",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["render", ":renderId"],
+                                    "variable": [
+                                        {
+                                            "key": "renderId"
+                                        }
+                                    ]
+                                }
+                            },
+                            "status": "Not Found",
+                            "code": 404,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{}"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "status",
+            "item": [
+                {
+                    "name": "Fetch the API status and version",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Accept",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{baseUrl}}/status",
+                            "host": ["{{baseUrl}}"],
+                            "path": ["status"]
+                        }
+                    },
+                    "response": [
+                        {
+                            "name": "Check the API status and version",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                    {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                    }
+                                ],
+                                "url": {
+                                    "raw": "{{baseUrl}}/status",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["status"]
+                                }
+                            },
+                            "status": "OK",
+                            "code": 200,
+                            "_postman_previewlanguage": "json",
+                            "header": [
+                                {
+                                    "key": "Content-Type",
+                                    "value": "application/json"
+                                }
+                            ],
+                            "cookie": [],
+                            "body": "{\n  \"success\": \"<boolean>\",\n  \"code\": \"<number>\",\n  \"message\": \"<string>\",\n  \"version\": \"<string>\"\n}"
+                        },
+                        {
+                            "name": "Something went wrong, contact support on the chat",
+                            "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                    "raw": "{{baseUrl}}/status",
+                                    "host": ["{{baseUrl}}"],
+                                    "path": ["status"]
+                                }
+                            },
+                            "status": "Internal Server Error",
+                            "code": 500,
+                            "_postman_previewlanguage": "text",
+                            "header": [],
+                            "cookie": [],
+                            "body": ""
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "apikey",
+        "apikey": [
+            {
+                "key": "value",
+                "value": "",
+                "type": "string"
+            },
+            {
+                "key": "key",
+                "value": "Authorization",
+                "type": "string"
+            }
+        ]
+    },
+    "event": [
+        {
+            "listen": "prerequest",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        },
+        {
+            "listen": "test",
+            "script": {
+                "type": "text/javascript",
+                "exec": [""]
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "baseUrl",
+            "value": "https://api.carbone.io"
+        }
+    ]
+}

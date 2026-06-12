@@ -1,0 +1,9 @@
+[build-system]
+requires = ["addon-odoo-wheel>=0.4"]
+build-backend = "addon_odoo_wheel.builder"
+
+[tool.addon-odoo-wheel]
+dependencies = [
+    "mangono-addon-export_json~=19.0",
+    "carbone_sdk~=1.0",
+]

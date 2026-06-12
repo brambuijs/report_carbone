@@ -1,0 +1,44 @@
+From 390dc731a554926c2648346fd7caf2dc727f5b77 Mon Sep 17 00:00:00 2001
+From: Bram Buijs <b.buijs@bb-open.com>
+Date: Thu, 11 Jun 2026 22:49:32 +0200
+Subject: [PATCH 3/6] =?UTF-8?q?fix(report=5Fcarbone):=20studio=20close=20?=
+ =?UTF-8?q?=E2=80=94=20v5.1.1=20heeft=20geen=20closeTemplate?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Carbone Studio v5.1.1 exposeert close()/destroy() maar GEEN closeTemplate().
+safeCloseTemplate faalde daardoor elke re-render → studio brak af (editor
+verdween/blank). Nu typeof-guard: closeTemplate → close → destroy.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ .../static/src/js/report/initiate_studio.js          | 12 +++++++++++-
+ 1 file changed, 11 insertions(+), 1 deletion(-)
+
+diff --git a/report_carbone/static/src/js/report/initiate_studio.js b/report_carbone/static/src/js/report/initiate_studio.js
+index 7b9e191..87c8dfc 100644
+--- a/report_carbone/static/src/js/report/initiate_studio.js
++++ b/report_carbone/static/src/js/report/initiate_studio.js
+@@ -147,7 +147,17 @@ class CarboneStudioManager {
+         };
+         window.addEventListener("unhandledrejection", suppressAbort);
+         try {
+-            this.currentStudio.closeTemplate();
++            // BB Open patch: Carbone Studio v5.1.1 heeft GEEN closeTemplate (wel
++            // close/destroy) → originele call faalde elke re-render → studio brak af.
++            // Roep de method aan die de geladen studio-versie wel heeft.
++            const s = this.currentStudio;
++            if (typeof s.closeTemplate === "function") {
++                s.closeTemplate();
++            } else if (typeof s.close === "function") {
++                s.close();
++            } else if (typeof s.destroy === "function") {
++                s.destroy();
++            }
+         } catch (e) {
+             if (e.name !== "AbortError") {
+                 console.error("Error closing template:", e);
+-- 
+2.54.0
+

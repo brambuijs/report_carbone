@@ -1,0 +1,38 @@
+From f7bf1c5239f30341b78e4ba76d691fb0c3702e1b Mon Sep 17 00:00:00 2001
+From: Bram Buijs <b.buijs@bb-open.com>
+Date: Thu, 11 Jun 2026 17:18:25 +0200
+Subject: [PATCH 1/6] fix(report_carbone): render tegen on-premise carbone
+ i.p.v. cloud
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+get_carbone_sdk zette de SDK-api_url niet → SDK-default api.carbone.io (cloud)
+→ on-prem render-token (aud=carbone-ee) geweigerd: 'Invalid JWT audience'.
+Nu set_api_url(carbone_studio_url) zodat render naar de eigen server gaat.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ report_carbone/models/base/ir_actions_report.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/report_carbone/models/base/ir_actions_report.py b/report_carbone/models/base/ir_actions_report.py
+index 8c3ff96..9452e63 100644
+--- a/report_carbone/models/base/ir_actions_report.py
++++ b/report_carbone/models/base/ir_actions_report.py
+@@ -542,6 +542,12 @@ class IrActionsReportCarbone(models.Model):
+ 
+         csdk = carbone_sdk.CarboneSDK(access_token)
+         csdk._api_headers.update({"User-Agent": self.get_default_user_agent()})
++        # BB Open patch: render tegen on-premise Carbone-server i.p.v. SDK-default
++        # api.carbone.io (cloud). carbone_studio_url wordt anders alleen voor de
++        # browser-Studio gebruikt → render lekt naar cloud → "Invalid JWT audience".
++        api_url = self.env["ir.config_parameter"].sudo().get_param("report-engine.carbone_studio_url")
++        if api_url:
++            csdk.set_api_url(api_url.rstrip("/"))
+         return csdk
+ 
+     def _call_carbone_to_get_streams(self, all_res_ids_wo_stream: list, collected_streams: OrderedDict):
+-- 
+2.54.0
+

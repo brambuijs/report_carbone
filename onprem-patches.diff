@@ -1,0 +1,109 @@
+diff --git a/report_carbone/models/base/ir_actions_report.py b/report_carbone/models/base/ir_actions_report.py
+index 8c3ff96..57c3aa1 100644
+--- a/report_carbone/models/base/ir_actions_report.py
++++ b/report_carbone/models/base/ir_actions_report.py
+@@ -542,6 +542,12 @@ class IrActionsReportCarbone(models.Model):
+ 
+         csdk = carbone_sdk.CarboneSDK(access_token)
+         csdk._api_headers.update({"User-Agent": self.get_default_user_agent()})
++        # BB Open patch: render tegen on-premise Carbone-server i.p.v. SDK-default
++        # api.carbone.io (cloud). carbone_studio_url wordt anders alleen voor de
++        # browser-Studio gebruikt → render lekt naar cloud → "Invalid JWT audience".
++        api_url = self.env["ir.config_parameter"].sudo().get_param("report-engine.carbone_studio_url")
++        if api_url:
++            csdk.set_api_url(api_url.rstrip("/"))
+         return csdk
+ 
+     def _call_carbone_to_get_streams(self, all_res_ids_wo_stream: list, collected_streams: OrderedDict):
+@@ -853,9 +859,15 @@ class IrActionsReportCarbone(models.Model):
+         }
+         res = self.call_carbone_endpoint(endpoint, params, raise_error)
+ 
++        # BB Open patch: on-premise carbone-ee draait stateless (geen DB) → het
++        # /templates-endpoint bestaat niet (error-string, code w130) i.p.v. een
++        # JSON-dict. Default dan naar .docx (WAF-templates zijn .docx).
++        if not isinstance(res, dict):
++            return ".docx"
++
+         data_list = res.get("data")
+         if not data_list:
+-            return False
++            return ".docx"
+ 
+         return data_list[0].get("type")
+ 
+diff --git a/report_carbone/post_install.py b/report_carbone/post_install.py
+index a8863b3..91ea734 100644
+--- a/report_carbone/post_install.py
++++ b/report_carbone/post_install.py
+@@ -1,5 +1,10 @@
++# BB Open: report_carbone draait WAF-only tegen de self-hosted carbone-ee.
++# Studio-JS blijft van de publieke CDN (self-contained, geen auth/CORP-issues);
++# alleen origin/render wijzen naar onze on-prem carbone (browser-bereikbaar +
++# server-side hairpin). Cloud-default (api.carbone.io) zou render naar de cloud
++# lekken → "Invalid JWT audience" + lege studio. NIET terugzetten naar cloud.
+ STUDIO_JS_URL = "https://bin.carbone.io/studio/5.1.1/carbone-studio.min.js"
+-API_REPORT_URL = "https://api.carbone.io"
++API_REPORT_URL = "https://carbone-wearefrank.bb-open.com"
+ 
+ 
+ def set_res_config_settings(env):
+diff --git a/report_carbone/static/src/js/report/initiate_studio.js b/report_carbone/static/src/js/report/initiate_studio.js
+index 7b9e191..8714b6b 100644
+--- a/report_carbone/static/src/js/report/initiate_studio.js
++++ b/report_carbone/static/src/js/report/initiate_studio.js
+@@ -147,7 +147,17 @@ class CarboneStudioManager {
+         };
+         window.addEventListener("unhandledrejection", suppressAbort);
+         try {
+-            this.currentStudio.closeTemplate();
++            // BB Open patch: Carbone Studio v5.1.1 heeft GEEN closeTemplate (wel
++            // close/destroy) → originele call faalde elke re-render → studio brak af.
++            // Roep de method aan die de geladen studio-versie wel heeft.
++            const s = this.currentStudio;
++            if (typeof s.closeTemplate === "function") {
++                s.closeTemplate();
++            } else if (typeof s.close === "function") {
++                s.close();
++            } else if (typeof s.destroy === "function") {
++                s.destroy();
++            }
+         } catch (e) {
+             if (e.name !== "AbortError") {
+                 console.error("Error closing template:", e);
+@@ -181,6 +191,15 @@ class CarboneStudioManager {
+         return new Promise((resolve) => {
+             this.debounceTimer = setTimeout(async () => {
+                 try {
++                    // Skip re-entrant refresh while a template load is mid-flight
++                    // (the ~2s openTemplate window in safeOpenTemplate). A transient
++                    // re-render here re-evaluates getIsCarboneReport()=false and hides
++                    // the just-mounted studio ("appears then disappears" flicker).
++                    if (this.isTemplateLoading && this.currentStudio) {
++                        resolve();
++                        return;
++                    }
++
+                     this.cleanup();
+                     this.resetOptions();
+ 
+@@ -259,6 +278,7 @@ class CarboneStudioManager {
+     async launchCarbone(studio, studioURL, carboneToken) {
+         if (!studio || !studioURL || !carboneToken) {
+             DOMUtils.setDisplayNone(studio);
++            this.isTemplateLoading = false;   // niet vasthouden → refresh-guard deadlockt anders
+             return false;
+         }
+ 
+diff --git a/report_carbone/views/carbone/report_carbone_menu.xml b/report_carbone/views/carbone/report_carbone_menu.xml
+index 632774a..cf3984f 100644
+--- a/report_carbone/views/carbone/report_carbone_menu.xml
++++ b/report_carbone/views/carbone/report_carbone_menu.xml
+@@ -14,6 +14,7 @@
+     <menuitem
+         id="carbone_report_menu_root"
+         name="Document Generation"
++        web_icon="report_carbone,static/description/icon.png"
+         sequence="400"
+         groups="report_carbone.group_report_carbone_viewer"
+     />

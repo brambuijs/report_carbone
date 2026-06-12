@@ -1,0 +1,33 @@
+From 472735861f9c15633efa85a6c06dd792b4559edb Mon Sep 17 00:00:00 2001
+From: Bram Buijs <b.buijs@bb-open.com>
+Date: Fri, 12 Jun 2026 11:24:40 +0200
+Subject: [PATCH 6/6] =?UTF-8?q?fix(report=5Fcarbone):=20app-menu=20web=5Fi?=
+ =?UTF-8?q?con=20=E2=80=94=20icoon=20ontbrak=20in=20Apps-menu?=
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+carbone_report_menu_root zette geen web_icon → "Document Generation" toonde een
+blanco/niet-ladend icoon in het Odoo apps-menu. Wijst nu naar de meegeleverde
+static/description/icon.png.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ report_carbone/views/carbone/report_carbone_menu.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/report_carbone/views/carbone/report_carbone_menu.xml b/report_carbone/views/carbone/report_carbone_menu.xml
+index 632774a..cf3984f 100644
+--- a/report_carbone/views/carbone/report_carbone_menu.xml
++++ b/report_carbone/views/carbone/report_carbone_menu.xml
+@@ -14,6 +14,7 @@
+     <menuitem
+         id="carbone_report_menu_root"
+         name="Document Generation"
++        web_icon="report_carbone,static/description/icon.png"
+         sequence="400"
+         groups="report_carbone.group_report_carbone_viewer"
+     />
+-- 
+2.54.0
+

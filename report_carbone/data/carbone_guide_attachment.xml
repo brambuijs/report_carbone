@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_carbone_userguide_attachment" model="ir.attachment">
+        <field name="name">Carbone_report_guide.pdf</field>
+        <field name="datas" type="base64" file="report_carbone/docs/carbone_userguide_v18.pdf"/>
+        <field name="public">True</field>
+    </record>
+</odoo>

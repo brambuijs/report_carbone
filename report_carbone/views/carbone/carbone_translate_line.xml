@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_carbone_translate_line_view_list" model="ir.ui.view">
+        <field name="name">report_carbone_carbone_translate_line_list</field>
+        <field name="model">carbone.translate.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="carbone_translate_id" invisible="1"/>
+                <field name="source"/>
+                <field name="value"/>
+            </list>
+        </field>
+    </record>
+</odoo>

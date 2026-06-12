@@ -1,0 +1,859 @@
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__credits_used
+msgid "Credits used"
+msgstr "Crédits utilisés"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "\"File name\""
+msgstr "\"Nom du fichier\"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "<span class=\"text-muted\">Exceeding Credits Fee:</span>"
+msgstr "<span class=\"text-muted\">Frais de dépassement de crédits:</span>"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "<span class=\"text-muted\">Exceeding Template Fee:</span>"
+msgstr "<span class=\"text-muted\">Frais de déplacement de modèle:</span>"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "<span class=\"text-muted\">Included Credits:</span>"
+msgstr "<span class=\"text-muted\">Crédis inclus:</span>"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "<span class=\"text-muted\">Included Templates:</span>"
+msgstr "<span class=\"text-muted\">Modèles inclus:</span>"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "<span class=\"text-muted\">Price HT:</span>"
+msgstr "<span class=\"text-muted\">Prix HT:</span>"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid ""
+"<strong>Save</strong>\n"
+"                                this page and come back here to set up the feature."
+msgstr ""
+"<strong>Sauvegardez</strong>\n"
+"                                et revenez ici pour configurer la fonctionnalité."
+
+#. module: report_carbone
+#: model:ir.model.constraint,message:report_carbone.constraint_carbone_translate_lang_report_uniq
+msgid "A report cannot have two translations for the same language."
+msgstr "Un rapport ne peut pas avoir plus de deux traductions pour une même langue."
+
+#. module: report_carbone
+#: model:ir.model.constraint,message:report_carbone.constraint_carbone_translate_line_source_value_uniq
+msgid "A report cannot have two translations for the same value."
+msgstr "Un rapport ne pas pas avoir deux traductions avec une même valeur."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "API Keys"
+msgstr "Clés API"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__access_token
+msgid "Access Token"
+msgstr "Token d'accès"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__expire_date
+msgid "Access Token expires date"
+msgstr "Date d'expiration du token d'accès"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Account technical settings"
+msgstr "Paramètres techniques du compte"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__is_account_stage_mode
+msgid "Account test mode"
+msgstr "Mode test du compte"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Add the API key to print reports easily with Carbone."
+msgstr "Ajoutez la clé API pour imprimer facilement des rapports avec Carbone."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Add the API key to print reports easily with Carbone."
+msgstr "Ajoutez la clé API pour imprimer facilement des rapports avec Carbone."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Link to Carbone design documentation"
+msgstr "Lien vers la documentation design Carbone"
+
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Log in to Carbone"
+msgstr "Se connecter à Carbone"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Authorize Odoo to access to a Carbone account"
+msgstr "Autoriser Odoo à accéder à un compte Carbone"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Billing"
+msgstr "Facturation"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Billing information"
+msgstr "Informations de facturation"
+
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__is_carbone_plan_subscribed
+msgid "Carbon plan Subscribed"
+msgstr "Plan Carbone Souscrit"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__carbone_js_file_url
+msgid "Carbone JS file URL"
+msgstr "URL du fichier JS Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__carbone_price_name
+msgid "Carbone Plan subscribed"
+msgstr "Plan Carbone souscrit"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate__ir_actions_report_id
+#: model:ir.model.fields.selection,name:report_carbone.selection__ir_actions_report__report_type__carbone
+msgid "Carbone Report"
+msgstr "Rapport Carbone"
+
+#. module: report_carbone
+#: model:res.groups,name:report_carbone.group_report_carbone_manager
+msgid "Carbone Report - Manager"
+msgstr "Rapport Carbone - Responsable"
+
+#. module: report_carbone
+#: model:res.groups,name:report_carbone.group_report_carbone_viewer
+msgid "Carbone Report - Viewer"
+msgstr "Rapport Carbone - Lecteur"
+
+#. module: report_carbone
+#: model:ir.ui.menu,name:report_carbone.carbone_report_menu_root
+msgid "Document Generation"
+msgstr "Génération de document"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__carbone_studio_url
+msgid "Carbone Studio URL"
+msgstr "URL Studio Carbone"
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_translate
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate_line__carbone_translate_id
+msgid "Carbone Translate"
+msgstr "Traduction Carbone"
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_translate_line
+msgid "Carbone Translate Line"
+msgstr "Ligne de traduction Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_res_config_settings__is_carbone_plan_subscribed
+msgid "The Carbone plan linked to the account is paid"
+msgstr "Le plan Carbone liée au compte est payé"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_see_prices__carbone_price_ids
+msgid "Carbone prices"
+msgstr "Prix Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__template_id
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_create_report_wizard__template_id
+msgid "Carbone Template ID"
+msgstr "Carbone Template ID"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Carbone.io Integration"
+msgstr "Intégration Carbone.io"
+
+#. module: report_carbone
+#: model:ir.actions.act_window,name:report_carbone.action_carbone_report_template_tree_all
+msgid "Printing actions"
+msgstr "Actions d'impression"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "Carbone Template ID must be set for this action."
+msgstr "Le Carbone Template ID doit être défini pour cette action."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Report file example"
+msgstr "Exemple de fichier de rapport"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Carbone.io integration"
+msgstr "Intégration Carbone.io"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Carbone.io subscription plan information"
+msgstr "Informations sur le plan d'abonnement Carbone.io"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Carbone.io. plan"
+msgstr "Plan Carbone.io"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Check if Carbone account connection is up"
+msgstr "Vérifiez si la connexion au compte Carbone est établie"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_res_config_settings__is_account_stage_mode
+msgid "Checked to use test account endpoints"
+msgstr "Coché pour utilisé les accès de compte test"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__client_id
+msgid "Client ID"
+msgstr "Client ID"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__client_secret
+msgid "Client Secret"
+msgstr "Client Secret"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Client identifier for API authentication"
+msgstr "Identifiant client pour l'authentification via API"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Client secret for API authentication"
+msgstr "Secret client pour l'authentification API"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_create_report_wizard_form
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_print_by_action_view_form
+msgid "Close"
+msgstr "Fermer"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "Create/update export template"
+msgstr "Créer/mettre à jour un modèle d'export"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.report_carbone_translate_view_form
+msgid "Create/update languages placeholder"
+msgstr "Créer/mettre à jour des valeurs génériques pour chaque langue"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__currency_id
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_print_by_action__currency_id
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__currency_id
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__currency_id
+msgid "Currency"
+msgstr "Devise"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__default_currency_id
+msgid "Default currency"
+msgstr "Devise par défaut"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Documentation"
+msgstr "Documentation"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__exceeding_credits_fee
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__exceeding_credits_fee
+msgid "Exceeding Credits Fee"
+msgstr "Frais de dépassement de crédits"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__exceeding_template_fee
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__exceeding_template_fee
+msgid "Exceeding Template Fee"
+msgstr "Frais de déplacement de modèle"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__export_model
+msgid "Export Model"
+msgstr "Modèle d'export"
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_field_extractor
+msgid "Field extractor for exports based on views"
+msgstr "Extracteur de champs pour exports basé sur les vues"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_exports_line__field_label
+msgid "Field label"
+msgstr "Nom du champ"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_carbone_print_by_action__lang_id
+msgid "If this option is enabled, the language in which the report is printed"
+msgstr "Si cette option est activée, langue dans laquelle le rapport est imprimé"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__included_credits
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__included_credits
+msgid "Included Credits"
+msgstr "Crédis inclus"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__included_templates
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__included_templates
+msgid "Included Templates"
+msgstr "Modèles inclus"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__currency_id
+msgid ""
+"Leave blank to let Odoo manage the currency to use "
+"(by default the currency of the associated template, "
+"if there is a currency, otherwise the company currency)."
+msgstr ""
+"Laisser vide pour laisser Odoo gérer la devise à utiliser (par défaut la "
+"devise du modèle associé, s'il y a une devise, sinon la devise de la "
+"société)"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_print_by_action__lang_id
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate__lang_id
+msgid "Language"
+msgstr "Langue"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__lang_ids
+msgid ""
+"Language(s) into which the report must be translated. Leave blank if no "
+"specific translation is required."
+msgstr ""
+"Langue(s) dans laquelle/lesquelles le rapport doit être traduit."
+"Laisser vide si aucune traduction spécifique n'est requise."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__lang_ids
+msgid "Languages"
+msgstr "Langues"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate__carbone_translate_line_ids
+msgid "Translation lines"
+msgstr "Lignes de traduction"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_res_config_settings__currency_id
+msgid "Carbone plan currency"
+msgstr "Devise du plan Carbone"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Manage Carbone Reports"
+msgstr "Modifier les rapports Carbone"
+
+#. module: report_carbone
+#: model:ir.ui.menu,name:report_carbone.menu_ir_action_report_settings
+msgid "By Carbone.io"
+msgstr "Par Carbone.io"
+
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_price
+msgid "Model to manage different Carbone subscription prices"
+msgstr "Modèle permettant de paramétrer différents prix d'abonnement Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_exports_line__field_label
+msgid "Name render in model view"
+msgstr "Nom affiché dans la vue du modèle"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__next_billing_amount
+msgid "Next billing amount"
+msgstr "Montant de la prochaine facture"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__next_billing_date
+msgid "Next billing date"
+msgstr "Date de la prochaine facture"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_res_config_settings__access_token
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid ""
+"Oauth2.0 token sent by Carbone.io, when user consents use of their account. "
+"You can manually set this token for debugging"
+msgstr "Token Oauth2.0 envoyé par Carbone.io lorsque l'utilisateur consent à l'utilisation de son compte."
+"Vous pouvez définir manuellement ce token pour des tests."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_print_by_action__id_object
+msgid "Object ID"
+msgstr "ID de l'enregistrement"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_print_by_action__name
+msgid "Object Model"
+msgstr "Modèle de l'enregistrement"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__input_user_model_id
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_create_report_wizard__input_user_model_id
+msgid "Odoo model name"
+msgstr "Nom du modèle Odoo"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_create_report_wizard__action_name
+msgid "Action name"
+msgstr "Nom de l'action"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_create_report_wizard__report_type_extension
+msgid "Report extension"
+msgstr "Extension du rapport"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__period
+msgid "Period"
+msgstr "Période"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__period_end
+msgid "Period end"
+msgstr "Fin de période"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__period_start
+msgid "Period start"
+msgstr "Début de période"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__price
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__price
+msgid "Price HT"
+msgstr "Prix HT"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_print_by_action_view_form
+msgid "Print"
+msgstr "Imprimer"
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_print_by_action
+msgid "Print by action"
+msgstr ""
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__prod_api_key
+msgid "Prod API Key"
+msgstr "Clé API Prod"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__m2o_reference_id
+msgid "Record for preview"
+msgstr "Enregistrement pour la prévisualisation"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__redirect_url
+msgid "Redirect URL"
+msgstr "URL de redirection"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "Refresh Studio"
+msgstr "Actualiser le Studio"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__refresh_token
+msgid "Refresh Token"
+msgstr "Token d'actualisation "
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_price__is_selected
+msgid "Selected"
+msgstr "Sélectionné"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.carbone_see_prices_view_form
+msgid "Shop with Stripe"
+msgstr "Acheter avec Stripe"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__strip_id_session
+msgid "Strip Session ID"
+msgstr "ID Session Strip"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Subscribe"
+msgstr "S'abonner"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Synchronize usage"
+msgstr "Synchronizer la consommation"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__templates_used
+msgid "Templates used"
+msgstr "Modèles utilisés"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate_line__source
+msgid "Source term"
+msgstr "Terme source"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__stage_api_key
+msgid "Test API Key"
+msgstr "Clé API Test"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Test Carbone connection"
+msgstr "Tester la connexion avec Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_res_config_settings__is_stage_mode
+msgid "Test mode"
+msgstr "Mode Test"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "Test generation without leaving this form."
+msgstr "Testez la génération sans quitter ce formulaire."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_print_by_action_view_form
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "Test generation"
+msgstr "Tester la génération"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "Test generation"
+msgstr "Tester la génération"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_print_by_action__tz
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__tz
+msgid "Timezone"
+msgstr "Fuseau horaire"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__carbone_translate_ids
+msgid "Translations available"
+msgstr "Traductions disponible"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid "Translations"
+msgstr "Traductions"
+
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__export_model
+msgid ""
+"Odoo export template used to retrieve information from a record when "
+"printing the report. These are the same exports as on the Odoo “Export Data”"
+" pop-up."
+msgstr ""
+"Model d'export Odoo a utilisé pour récupérer les informations d'un "
+"enregistrement, lors de l'impression du rapport. Ce sont les mêmes export "
+"que sur la pop-up Odoo 'Export Data'"
+
+
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_res_config_settings__redirect_url
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid ""
+"URL used by Carbone to redirect the user once the user consents access to "
+"the use of their Carbone account by Odoo."
+msgstr ""
+"URL utilisée par Carbone pour redirigé l'utilisateur, "
+"une fois que l'utilisateur consent à l'utilisation de son compte Carbone par Odoo."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid "Documentation"
+msgstr "Documentation"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "An error occurred when generating the report via Carbone : %s"
+msgstr "Une erreur s'est produite lors de la génération du rapport via Carbone : %s"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "Error : Model not found in registry"
+msgstr "Erreur: Modèle non trouvé dans le registre"
+
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "Unable to read file: %s"
+msgstr "Impossible de lire le fichier : %s"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid ""
+"No API Carbone key has been entered. Please enter it or contact your "
+"administrator."
+msgstr ""
+"Aucune clé API Carbone n'a été saisie. Veuillez la saisir ou contacter votre"
+"administrateur."
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "No %s selected for printing."
+msgstr ""
+"Aucun(e) %s sélectionné(e) pour l'impression."
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/carbone/carbone_print_by_action.py:0
+msgid "No record is retrieve with this id."
+msgstr "Aucun enregistrement n'a été trouvé avec cet id."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_carbone_translate_line__value
+msgid "Translation Value"
+msgstr "Valeur de la traduction"
+
+#. module: report_carbone
+#: model:ir.model,name:report_carbone.model_carbone_see_prices
+msgid "Wizard allowing subscription to a Carbone plan"
+msgstr "Assistant permettant de souscrire à un forfait Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__m2o_reference_model
+msgid "Reference to the model for m2o_reference"
+msgstr "Reference au modèle pour m2o_reference"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/controllers/main.py:0
+msgid "No report with this name and Carbone type was found."
+msgstr "Aucun rapport avec ce nom et de type Carbone n'a été trouvé."
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/controllers/main.py:0
+msgid "Please add a name to the report in order to export it."
+msgstr "Veuillez ajouter un nom au rapport pour pouvoir l'exporter."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__file_extension
+msgid "File extension linked to Carbone Template ID"
+msgstr "Extension de fichier liée à l'ID du modèle Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__partner_lang_path
+msgid "Path of the language field"
+msgstr "Chemin du champ de la langue"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__partner_lang_path
+msgid ""
+"If specified, the report will be printed according to the language defined in the path. "
+"For example, to print the report in the customer's language for a purchase order, specify partner_id.lang_id. "
+"Leave blank to print the report in the first language specified in the 'Language' field."
+msgstr ""
+"Si spécifié, le rapport sera imprimé en fonction de la langue du chemin "
+"défini. Par exemple, pour imprimer le rapport avec la langue du client, pour"
+" une commande d'achat, il faut indiquer partner_id.lang_id. Laissez-vide pour"
+" imprimer le rapport avec la première langue indiqué dans le champ "
+"'Languages'."
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+
+msgid "Create a Carbone Account"
+msgstr "Créer un compte Carbone"
+
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid ""
+"In test mode, printed reports will have a watermark, and newly created reports\n"
+"                                    will be deleted after 30 days."
+msgstr ""
+"En mode de test, les rapports imprimés auront un filigrane, et les nouveaux\n"
+"                             rapports créés seront supprimés au bout de 30 jours"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid "An error occurred when uploading placeholder report Carbone : %s"
+msgstr "Une erreur s'est produite lors du téléchargement du rapport temporaire Carbone : %s"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.res_config_settings_view_form_carbone_inherit
+msgid ""
+"In test mode, printed reports will have a watermark, and newly created reports\n"
+"                                    will be deleted after 30 days."
+msgstr ""
+"En mode de test, les rapports imprimés auront un filigrane, et les nouveaux\n"
+"                            rapports créés seront supprimés au bout de 30 jours."
+
+
+#. module: report_carbone
+#. odoo-javascript
+#: code:addons/report_carbone/static/src/xml/list_template.xml:0
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_create_report_wizard_form
+msgid "New document"
+msgstr "Nouveau document"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_create_report_wizard_form
+msgid "Sauvegarder"
+msgstr ""
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__use_complement
+msgid "Use complement datas"
+msgstr "Utilisation des compléments"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_carbone_create_report_wizard_form
+msgid ""
+"You can either enter a Carbone Template ID if you already have a Carbone report,\n"
+"                    or choose the extension for your new document."
+msgstr ""
+"Vous pouvez soit renseigner un Carbone Template ID, si vous possédez déjà un rapport Carbone,\n"
+"                    ou bien choisir l'extension de votre nouveau rapport."
+
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/carbone/carbone_create_report_wizard.py:0
+msgid ""
+"You must specify either a template or an extension, but not both."
+msgstr ""
+"Vous devez renseigner soit un template, soit une extension, mais pas les "
+"deux."
+
+#. module: report_carbone
+#. odoo-javascript
+#: code:addons/report_carbone/static/src/js/report/action_create_ir_report.js:0
+msgid "Create new Carbone report"
+msgstr "Créer un nouveau rapport Carbone"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_carbone_create_report_wizard__template_id
+msgid "Leave empty if you don't have any existing template for this report"
+msgstr "Laissez vide si vous n'avez pas de template existant pour ce rapport"
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_carbone_create_report_wizard__report_type_extension
+msgid ""
+"Leave empty if you already have a existing Carbone template for this report, then set the Template ID"
+msgstr ""
+"Laissez vide si vous disposez déjà d'un rapport carbone existant, en définissant le Carbone Template ID."
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__m2o_reference_id
+msgid ""
+"The data from the field record will be used for document preview in Studio. "
+"The record ID will be used by default for the 'test generation' pop-up."
+msgstr "Les données de l'enregistrement du champ seront utilisées pour la prévisualisation du "
+"document, dans le Studio. L'id de l'enregistrement sera utilisé par défaut pour le pop-up tester la génération."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__is_available_in_print_action
+msgid "Enable"
+msgstr "Actif"
+
+#. module: report_carbone
+#: model_terms:ir.ui.view,arch_db:report_carbone.act_report_carbone_view
+msgid ""
+"Please note that you have copied the version ID and not the template ID."
+msgstr "Attention, vous avez copié le version ID and non pas le template ID."
+
+#. module: base
+#: model:ir.model.fields,field_description:base.field_ir_actions_report__print_report_name
+msgid "Printed Report Name"
+msgstr "Nom du fichier"
+
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid ""
+"You cannot generate a document in any format other than PDF in test mode "
+"and/or without a prod API key"
+msgstr ""
+"En mode test et/ou sans clé API de production, vous ne pouvez pas générer de "
+"document dans un autre format que le PDF"
+
+#. module: report_carbone
+#. odoo-python
+#: code:addons/report_carbone/models/base/ir_actions_report.py:0
+msgid ""
+"The extension you entered is not included in the list of extensions "
+"supported by Carbone."
+msgstr ""
+"L'extension saisie n'est pas incluse dans la liste des extensions supportées par Carbone."
+
+
+#. module: report_carbone
+#: model:ir.model.fields,help:report_carbone.field_ir_actions_report__report_output_file_extension
+msgid ""
+"To be specified in order to generate a document in a format other than PDF "
+"The output format must be included in the list of formats supported by "
+"Carbone. You must provide a production API key and must not be in test mode."
+msgstr ""
+"À définir pour générer un document dans une autre extension que PDF. "
+"L'extension de sortie doit être dans la liste des extensions supportées "
+"par Carbone. Il faut obligatoirement renseigner une clé API prod et ne pas "
+"être en mode de test."
+
+#. module: report_carbone
+#: model:ir.model.fields,field_description:report_carbone.field_ir_actions_report__report_output_file_extension
+msgid "File extension of the generated document"
+msgstr "Extension du document généré"
