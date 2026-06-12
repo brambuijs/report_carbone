@@ -1,7 +1,7 @@
 From 390dc731a554926c2648346fd7caf2dc727f5b77 Mon Sep 17 00:00:00 2001
 From: Bram Buijs <b.buijs@bb-open.com>
 Date: Thu, 11 Jun 2026 22:49:32 +0200
-Subject: [PATCH 3/6] =?UTF-8?q?fix(report=5Fcarbone):=20studio=20close=20?=
+Subject: [PATCH 3/8] =?UTF-8?q?fix(report=5Fcarbone):=20studio=20close=20?=
  =?UTF-8?q?=E2=80=94=20v5.1.1=20heeft=20geen=20closeTemplate?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

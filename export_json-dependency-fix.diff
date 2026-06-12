@@ -1,0 +1,20 @@
+diff --git a/export_json/controller/main.py b/export_json/controller/main.py
+index 3841b6a..4ca8343 100644
+--- a/export_json/controller/main.py
++++ b/export_json/controller/main.py
+@@ -469,9 +469,13 @@ class JsonExportFormat(ExportFormat, http.Controller):
+         records = model.browse(ids) if ids else model.search(domain, offset=0, limit=False, order=False)
+         parser = self.define_parser(field_names)
+ 
++        # BB Open patch: gebruik model.env i.p.v. de HTTP-`request` (Werkzeug
++        # LocalProxy). Anders faalt server-side render vanuit een button/cron met
++        # "object is not bound" — request is enkel gebonden in een HTTP-controller.
++        env = model.env
+         if not langs_code:
+-            langs_code = [request.env.context.get("lang")] or [request.env.user.lang]
+-        tz = request.env.context.get("tz") or request.env.user.tz
++            langs_code = [env.context.get("lang")] or [env.user.lang]
++        tz = env.context.get("tz") or env.user.tz
+         if len(langs_code) == 1:
+             result = records.with_context(lang=langs_code[0], tz=tz).jsonify(parser)
+             self._add_selection_tech_fields_to_json(result, records, field_paths)

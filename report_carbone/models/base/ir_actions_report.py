@@ -491,6 +491,48 @@ class IrActionsReportCarbone(models.Model):
             return self.report_output_file_extension
         return "pdf"
 
+    def _carbone_fill_section_subtotals(self, data, sub_field="price_subtotal"):
+        """Vul sectie/fase-subtotalen in de render-data (in-place, recursief).
+
+        Odoo berekent het subtotaal van een 'line_section'-regel (sale/purchase/
+        invoice order lines) alleen in de UI/QWeb, niet in een opgeslagen veld →
+        in de Carbone-JSON staat het op 0. Voor elke lijst van regel-dicts met een
+        section krijgt die section als `sub_field` de som van de erop volgende
+        non-section-regels (tot de volgende section), zodat templates fase-totalen
+        kunnen tonen. line_note-regels tellen niet mee.
+        """
+        # export_json (JsonExportFormat) exporteert een selection als het LABEL
+        # (display_type="Section") + een aparte tech_<field>-key met de raw waarde
+        # ("line_section"). Check beide zodat het werkt ongeacht single/multi-lang.
+        def _is_section(x):
+            return isinstance(x, dict) and (
+                x.get("tech_display_type") == "line_section"
+                or x.get("display_type") in ("line_section", "Section")
+            )
+
+        def _is_note(x):
+            return isinstance(x, dict) and (
+                x.get("tech_display_type") == "line_note"
+                or x.get("display_type") in ("line_note", "Note")
+            )
+
+        if isinstance(data, dict):
+            for value in data.values():
+                self._carbone_fill_section_subtotals(value, sub_field)
+        elif isinstance(data, list):
+            for item in data:
+                self._carbone_fill_section_subtotals(item, sub_field)
+            if any(_is_section(x) for x in data):
+                current = None
+                for x in data:
+                    if not isinstance(x, dict):
+                        continue
+                    if _is_section(x):
+                        x[sub_field] = 0.0
+                        current = x
+                    elif not _is_note(x) and current is not None and isinstance(x.get(sub_field), (int, float)):
+                        current[sub_field] = (current.get(sub_field) or 0.0) + x[sub_field]
+
     def get_default_user_agent(self) -> str:
         default_user_agent = requests.utils.default_user_agent()
         return f"{default_user_agent} Mangono Odoo v{release.version}"
@@ -588,6 +630,12 @@ class IrActionsReportCarbone(models.Model):
                     [], field_names, record.ids, self.env[model], lang_codes
                 )
                 dict_full_data = json.loads(json_data)[0]
+                # BB Open patch: vul sectie/fase-subtotalen. Odoo berekent het
+                # subtotaal van een section-regel (sale/purchase/invoice) alleen in
+                # de UI/QWeb, niet in een veld → in de Carbone-data staat het op 0.
+                # We zetten het op de som van de volgende non-section-regels zodat
+                # templates fase-totalen kunnen tonen.
+                self._carbone_fill_section_subtotals(dict_full_data)
                 dict_langs = self._get_jsonify_translate_export()
                 # Modification by reference of dicts.
                 self.extract_translations(dict_full_data, dict_langs)

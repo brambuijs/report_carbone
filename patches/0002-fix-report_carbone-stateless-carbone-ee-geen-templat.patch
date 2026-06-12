@@ -1,7 +1,7 @@
 From d0fea636b3580ceed880cbeacbd718589832b8d7 Mon Sep 17 00:00:00 2001
 From: Bram Buijs <b.buijs@bb-open.com>
 Date: Thu, 11 Jun 2026 17:45:44 +0200
-Subject: [PATCH 2/6] =?UTF-8?q?fix(report=5Fcarbone):=20stateless=20carbon?=
+Subject: [PATCH 2/8] =?UTF-8?q?fix(report=5Fcarbone):=20stateless=20carbon?=
  =?UTF-8?q?e-ee=20=E2=80=94=20geen=20/templates-endpoint?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

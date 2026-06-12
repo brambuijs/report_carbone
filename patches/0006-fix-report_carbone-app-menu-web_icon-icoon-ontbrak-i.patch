@@ -1,7 +1,7 @@
 From 472735861f9c15633efa85a6c06dd792b4559edb Mon Sep 17 00:00:00 2001
 From: Bram Buijs <b.buijs@bb-open.com>
 Date: Fri, 12 Jun 2026 11:24:40 +0200
-Subject: [PATCH 6/6] =?UTF-8?q?fix(report=5Fcarbone):=20app-menu=20web=5Fi?=
+Subject: [PATCH 6/8] =?UTF-8?q?fix(report=5Fcarbone):=20app-menu=20web=5Fi?=
  =?UTF-8?q?con=20=E2=80=94=20icoon=20ontbrak=20in=20Apps-menu?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

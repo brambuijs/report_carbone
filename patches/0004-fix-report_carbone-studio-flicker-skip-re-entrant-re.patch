@@ -1,7 +1,7 @@
 From 92a4c825d7ccb2a73d4848ea92d5072fc616ecd5 Mon Sep 17 00:00:00 2001
 From: Bram Buijs <b.buijs@bb-open.com>
 Date: Thu, 11 Jun 2026 23:24:04 +0200
-Subject: [PATCH 4/6] =?UTF-8?q?fix(report=5Fcarbone):=20studio=20flicker?=
+Subject: [PATCH 4/8] =?UTF-8?q?fix(report=5Fcarbone):=20studio=20flicker?=
  =?UTF-8?q?=20=E2=80=94=20skip=20re-entrant=20refresh=20tijdens=20load?=
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8

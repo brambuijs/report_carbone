@@ -65,6 +65,27 @@ The `Document Generation` root `menuitem` set no `web_icon`, so the app showed a
 blank/non-loading icon in the Odoo apps menu. Fix: point it at the bundled
 `static/description/icon.png`.
 
+### 7. Section / phase subtotals — `models/base/ir_actions_report.py`
+Odoo only computes the subtotal of a `line_section` order line (sale / purchase /
+invoice) in the UI / QWeb, never in a stored field, so the Carbone data has `0`
+for section lines. `_carbone_fill_section_subtotals` sets it to the sum of the
+following non-section lines (until the next section), so templates can show
+phase/section totals. Generic + recursive; `line_note` lines don't count.
+
+### 8. Section detection via `tech_display_type` — `models/base/ir_actions_report.py`
+`export_json` (`JsonExportFormat`) exports a selection field as its **label**
+(`display_type` = "Section") plus a separate `tech_<field>` key holding the **raw
+value** ("line_section"). Section detection (fix #7 and the section-aware table
+template) must therefore match `tech_display_type`, not `display_type`. Handled
+robustly for single- and multi-lang exports.
+
+### Dependency fix — `export_json` (see `export_json-dependency-fix.diff`)
+`export_json`'s `perform_json_export` read lang/tz from the HTTP `request`
+(Werkzeug LocalProxy), which is only bound inside an HTTP controller. Rendering a
+Carbone report **server-side from a button or cron** then failed with `object is
+not bound`. Fix: use the passed `model.env` instead of `request`. Required for
+fixes #7/#8 (and any non-controller render) to work; ship it alongside.
+
 ## Notes for on-prem deployment (not code, but relevant)
 
 - The embedded studio loads its JS from the **public CDN** and only talks to the
