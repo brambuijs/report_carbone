@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="carbone_view_ir_exports">
+        <field name="model">ir.exports</field>
+        <field name="inherit_id" ref="jsonifier.view_ir_exports"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='language_agnostic']" position="replace"/>
+            <xpath expr="//field[@name='global_resolver_id']" position="replace"/>
+            <xpath
+                expr="//group[@name='index']/field[@name='export_fields']/list/field[@name='name']"
+                position="before"
+            >
+                <field name="field_label"/>
+            </xpath>
+            <xpath
+                expr="//group[@name='index']/field[@name='export_fields']/list/field[@name='target']"
+                position="attributes"
+            >
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='index']/field[@name='export_fields']/list/field[@name='lang_id']"
+                position="attributes"
+            >
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='index']/field[@name='export_fields']/list/field[@name='resolver_id']"
+                position="attributes"
+            >
+                <attribute name="optional">hide</attribute>
+            </xpath>
+            <xpath
+                expr="//group[@name='index']/field[@name='export_fields']/list/field[@name='instance_method_name']"
+                position="attributes"
+            >
+                <attribute name="optional">hide</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

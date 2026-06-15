@@ -1,6 +1,6 @@
 {
     "name": "Report Generator | Carbone.io",
-    "version": "19.0.1.0.9",
+    "version": "18.0.1.0.9",
     "author": "Mangono",
     "maintainer": "Mangono",
     "summary": """
@@ -22,6 +22,7 @@
         "data/carbone_guide_attachment.xml",
         "data/carbone_demo_template_purchase_order.xml",
         "views/base/ir_actions_report.xml",
+        "views/base/ir_exports.xml",
         "views/res/res_config_settings_carbone.xml",
         "views/carbone/carbone_print_by_action.xml",
         "views/carbone/report_carbone_menu.xml",

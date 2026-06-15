@@ -1,5 +1,9 @@
 # report_carbone — on-premise patches (BB Open Solutions)
 
+> **Branch `18.0`** — Odoo 18.0 CE. Zelfde on-prem-patches als `main` (19.0),
+> herbaseerd op Mangono report_carbone 18.0.1.0.9. Studio-JS-patch runtime te
+> testen op Odoo 18 CE.
+
 This repository contains our patched version of the **`report_carbone`** Odoo
 module (Mangono, AGPL-3, v19.0.1.0.9) together with the changes we needed to run
 it against a **self-hosted `carbone-ee`** server (Carbone Enterprise on-prem,

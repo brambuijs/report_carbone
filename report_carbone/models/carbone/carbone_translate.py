@@ -17,10 +17,13 @@ class CarboneTranslate(models.Model):
     carbone_translate_line_ids = fields.One2many(
         "carbone.translate.line", "carbone_translate_id", string="Translation lines"
     )
-    _lang_report_uniq = models.Constraint(
-        "UNIQUE(ir_actions_report_id, lang_id)",
-        "A report cannot have two translations for the same language.",
-    )
+    _sql_constraints = [
+        (
+            "lang_report_uniq",
+            "UNIQUE(ir_actions_report_id, lang_id)",
+            "A report cannot have two translations for the same language.",
+        )
+    ]
 
     def _create_translation_lines(
         self,

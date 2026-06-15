@@ -11,10 +11,13 @@ class CarboneTranslateLine(models.Model):
     )
     source = fields.Text(string="Source term")
     value = fields.Text(string="Translation Value", default="")
-    _source_value_uniq = models.Constraint(
-        "UNIQUE(source, value, carbone_translate_id)",
-        "A report cannot have two translations for the same value.",
-    )
+    _sql_constraints = [
+        (
+            "source_value_uniq",
+            "UNIQUE(source, value, carbone_translate_id)",
+            "A report cannot have two translations for the same value.",
+        )
+    ]
 
     def write(self, vals):
         # We replace occurrences of the value 'False'

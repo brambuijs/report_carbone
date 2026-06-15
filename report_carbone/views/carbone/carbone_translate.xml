@@ -17,20 +17,15 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <button
-                        name="button_create_update_copy_of_translate"
-                        icon="fa-refresh"
-                        string="Create/update languages placeholder"
-                        type="object"
-                        class="btn btn-secondary mb-2"
-                    />
-                    <!--                        class="mb-2"-->
-
                     <group>
-                        <!--                        <field name="ir_actions_report_id" invisible="1"/>-->
+                        <field name="ir_actions_report_id" invisible="1"/>
+                        <button
+                            name="button_create_update_copy_of_translate"
+                            icon="fa-refresh"
+                            string="Create/update languages placeholder"
+                            type="object"
+                        />
                         <field name="lang_id" options="{'no_open' : True}"/>
-                    </group>
-                    <group>
                         <field name="carbone_translate_line_ids" nolabel="1">
                             <list editable="bottom">
                                 <field name="source"/>

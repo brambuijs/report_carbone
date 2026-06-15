@@ -500,10 +500,11 @@ class IrActionsReportCarbone(models.Model):
         section krijgt die section als `sub_field` de som van de erop volgende
         non-section-regels (tot de volgende section), zodat templates fase-totalen
         kunnen tonen. line_note-regels tellen niet mee.
+
+        export_json (JsonExportFormat) exporteert een selection als het LABEL
+        (display_type="Section") + een aparte tech_<field>-key met de raw waarde
+        ("line_section"). Check beide zodat het werkt ongeacht single/multi-lang.
         """
-        # export_json (JsonExportFormat) exporteert een selection als het LABEL
-        # (display_type="Section") + een aparte tech_<field>-key met de raw waarde
-        # ("line_section"). Check beide zodat het werkt ongeacht single/multi-lang.
         def _is_section(x):
             return isinstance(x, dict) and (
                 x.get("tech_display_type") == "line_section"
@@ -585,12 +586,19 @@ class IrActionsReportCarbone(models.Model):
         csdk = carbone_sdk.CarboneSDK(access_token)
         csdk._api_headers.update({"User-Agent": self.get_default_user_agent()})
         # BB Open patch: render tegen on-premise Carbone-server i.p.v. SDK-default
-        # api.carbone.io (cloud). carbone_studio_url wordt anders alleen voor de
-        # browser-Studio gebruikt → render lekt naar cloud → "Invalid JWT audience".
+        # api.carbone.io (cloud) → anders "Invalid JWT audience".
         api_url = self.env["ir.config_parameter"].sudo().get_param("report-engine.carbone_studio_url")
         if api_url:
             csdk.set_api_url(api_url.rstrip("/"))
         return csdk
+
+    def _get_json_data(self, export_json_instance, field_names, record, model, lang_codes):
+        json_data = export_json_instance.perform_json_export([], field_names, record.ids, self.env[model], lang_codes)
+        dict_full_data = json.loads(json_data)[0]
+        # BB Open patch: vul sectie/fase-subtotalen (Odoo levert die alleen in de
+        # UI/QWeb, niet in een veld → in de Carbone-data staan ze op 0).
+        self._carbone_fill_section_subtotals(dict_full_data)
+        return dict_full_data
 
     def _call_carbone_to_get_streams(self, all_res_ids_wo_stream: list, collected_streams: OrderedDict):
         # Creation of Carbone and JsonExportFormat instances
@@ -626,16 +634,7 @@ class IrActionsReportCarbone(models.Model):
                 lang = lang.lower().replace("_", "-")
 
                 # Creating the JSON file (data and translate).
-                json_data = export_json_instance.perform_json_export(
-                    [], field_names, record.ids, self.env[model], lang_codes
-                )
-                dict_full_data = json.loads(json_data)[0]
-                # BB Open patch: vul sectie/fase-subtotalen. Odoo berekent het
-                # subtotaal van een section-regel (sale/purchase/invoice) alleen in
-                # de UI/QWeb, niet in een veld → in de Carbone-data staat het op 0.
-                # We zetten het op de som van de volgende non-section-regels zodat
-                # templates fase-totalen kunnen tonen.
-                self._carbone_fill_section_subtotals(dict_full_data)
+                dict_full_data = self._get_json_data(export_json_instance, field_names, record, model, lang_codes)
                 dict_langs = self._get_jsonify_translate_export()
                 # Modification by reference of dicts.
                 self.extract_translations(dict_full_data, dict_langs)
@@ -703,7 +702,7 @@ class IrActionsReportCarbone(models.Model):
         context = dict(self.env.context)
 
         report_sudo = self._get_report(report_ref)
-        report_sudo = report_sudo.with_env(self.env(context=context))
+        report_sudo.env.context = context
 
         # docids can be either a string, if the function call comes from
         # a "Print" button, on a list the call does not come from the button.
@@ -907,15 +906,14 @@ class IrActionsReportCarbone(models.Model):
         }
         res = self.call_carbone_endpoint(endpoint, params, raise_error)
 
-        # BB Open patch: on-premise carbone-ee draait stateless (geen DB) → het
-        # /templates-endpoint bestaat niet (error-string, code w130) i.p.v. een
-        # JSON-dict. Default dan naar .docx (WAF-templates zijn .docx).
+        # BB Open patch: stateless carbone-ee geeft soms een error-string i.p.v.
+        # een dict (geen /templates-endpoint) → res.get() crasht anders.
         if not isinstance(res, dict):
             return ".docx"
 
         data_list = res.get("data")
         if not data_list:
-            return ".docx"
+            return False
 
         return data_list[0].get("type")
 

@@ -4,7 +4,7 @@
 
 Carbone Odoo Connector
 ======================
-Carbone Odoo Connector system for Odoo 19 Community edition.
+Carbone Odoo Connector system for Odoo 18 Community edition.
 
 Configuration
 =============
@@ -29,7 +29,7 @@ General Public License, Version 3 (LGPL v3).
 
 Credits
 -------
-Developer: (V19) Mangono , Contact: contact@mangono.fr
+Developer: (V18) Mangono , Contact: contact@mangono.fr
 
 Contacts
 --------

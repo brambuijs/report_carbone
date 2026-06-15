@@ -25,7 +25,7 @@ class TestIrActionsReport(common.TransactionCase):
                 "report_file": "report_carbone.partner_carbone",
                 "binding_model_id": cls.env.ref("base.model_res_partner").id,
                 "binding_type": "report",
-                "group_ids": [
+                "groups_id": [
                     (
                         6,
                         0,
@@ -37,7 +37,7 @@ class TestIrActionsReport(common.TransactionCase):
                     )
                 ],
                 "template_id": "mock_carbone_template_id",
-                "export_model": cls.env.ref("export_json.ir_exp_partner").id,
+                "export_model": cls.env.ref("jsonifier.ir_exp_partner").id,
             }
         )
 

@@ -9,11 +9,11 @@
                     <field name="input_user_model_id" options="{'no_create': True, 'no_open': True}"/>
                     <field name="action_name"/>
                 </group>
-                <p>
-                    You can either enter a Carbone Template ID if you already have a Carbone report,
-                    or choose the extension for your new document.
-                </p>
                 <group>
+                    <p>
+                        You can either enter a Carbone Template ID if you already have a Carbone report,
+                    or choose the extension for your new document.
+                    </p>
                     <field name="report_type_extension"/>
                     <field name="template_id"/>
                 </group>

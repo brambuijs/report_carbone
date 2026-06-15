@@ -1,5 +1,9 @@
+diff --git a/export_json/controller/__pycache__/main.cpython-314.pyc b/export_json/controller/__pycache__/main.cpython-314.pyc
+new file mode 100644
+index 0000000..8515aff
+Binary files /dev/null and b/export_json/controller/__pycache__/main.cpython-314.pyc differ
 diff --git a/export_json/controller/main.py b/export_json/controller/main.py
-index 3841b6a..4ca8343 100644
+index 643e474..fc62d01 100644
 --- a/export_json/controller/main.py
 +++ b/export_json/controller/main.py
 @@ -469,9 +469,13 @@ class JsonExportFormat(ExportFormat, http.Controller):

@@ -5,3 +5,4 @@ report_carbone.access_carbone_create_report_wizard,access_carbone_create_report_
 report_carbone.access_carbone_field_extractor,access_carbone_field_extractor,report_carbone.model_carbone_field_extractor,base.group_user,1,1,1,1
 report_carbone.access_carbone_translate,access_carbone_translate,report_carbone.model_carbone_translate,base.group_user,1,1,1,1
 report_carbone.access_carbone_translate_line,access_carbone_translate_line,report_carbone.model_carbone_translate_line,base.group_user,1,1,1,1
+"access_ir_model_user","ir_model_all","model_ir_model",base.group_user,1,0,0,0
