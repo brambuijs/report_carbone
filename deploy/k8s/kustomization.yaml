@@ -1,0 +1,10 @@
+# Minimal kustomize entrypoint. You still need a `carbone-keys` Secret (key.pem + key.pub)
+# in the target namespace -- see README. Deploy: `kubectl apply -k deploy/k8s/`
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - service.yaml
+  - pvc.yaml
+  - corp-proxy-configmap.yaml
+  - deployment.yaml
+  - ingress.yaml

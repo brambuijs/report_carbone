@@ -1,0 +1,27 @@
+# carbone-ee / Studio ingress. Must be browser-reachable over public HTTPS:
+# report_carbone's carbone_studio_url is used both as the browser studio origin AND the
+# server-side render endpoint, so an internal cluster address will NOT work for the studio.
+# Adapt ingressClassName, host, TLS and annotations to your cluster.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: carbone
+  labels:
+    app.kubernetes.io/name: carbone
+  # annotations:
+  #   cert-manager.io/cluster-issuer: <your-issuer>
+spec:
+  ingressClassName: <your-ingress-class>
+  tls:
+    - hosts: [carbone.example.com]
+      secretName: carbone-tls
+  rules:
+    - host: carbone.example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: carbone
+                port: { number: 4000 }
