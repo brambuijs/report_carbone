@@ -1,0 +1,134 @@
+# carbone-ee server for report_carbone (on-prem).
+# Runs as non-root uid 1000 (works under restricted PodSecurity). LibreOffice/chrome baked in.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carbone
+  labels:
+    app.kubernetes.io/name: carbone
+    app.kubernetes.io/component: doc-renderer
+spec:
+  replicas: 1   # single-pod: RWO template/SQLite PVC
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: carbone
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: carbone
+        app.kubernetes.io/component: doc-renderer
+    spec:
+      # IMPORTANT: with a Service named "carbone", k8s injects CARBONE_PORT=tcp://<svc-ip>:4000
+      # into the pod; carbone-ee reads CARBONE_PORT as its listen port -> NaN crash. Disable it.
+      enableServiceLinks: false
+      securityContext:
+        runAsUser: 1000
+        runAsGroup: 1000
+        runAsNonRoot: true
+        fsGroup: 1000   # carbone-data PVC writable by uid/gid 1000
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: carbone
+          # Pin to a digest in production; latest shown for clarity.
+          image: docker.io/carbone/carbone-ee:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: carbone
+              containerPort: 4000
+          env:
+            - name: CARBONE_EE_STUDIO
+              value: "true"
+            - name: CARBONE_EE_AUTHENTICATION
+              value: "true"   # render API stays Bearer-token protected
+            # Do NOT set CARBONE_EE_STUDIOUSER: basic-auth on the studio breaks embedding
+            # in Odoo -- a cross-origin <script> load of the studio JS gets 401 (the browser
+            # sends no creds for subresources), so the embedded studio never loads.
+            # Stateful mode: SQLite DB (template metadata + versioning) under /app/database.
+            # Enables the /templates endpoint + embedded-studio versioning that report_carbone needs.
+            - name: CARBONE_DATABASE_NAME
+              value: "database.sqlite"
+          volumeMounts:
+            - name: data
+              mountPath: /app/template
+              subPath: template
+            - name: data
+              mountPath: /app/database
+              subPath: database
+            - name: render
+              mountPath: /app/render
+            # Stable keypair -- without it carbone regenerates keys on every restart and all
+            # previously issued render-tokens break. Server verifies render-tokens with key.pub;
+            # key.pem signs studio tokens. See deploy/k8s/README for how to generate.
+            - name: keys
+              mountPath: /app/config/key.pem
+              subPath: key.pem
+              readOnly: true
+            - name: keys
+              mountPath: /app/config/key.pub
+              subPath: key.pub
+              readOnly: true
+          readinessProbe:
+            tcpSocket: { port: carbone }
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          livenessProbe:
+            tcpSocket: { port: carbone }
+            initialDelaySeconds: 30
+            periodSeconds: 30
+          resources:
+            requests: { cpu: 100m, memory: 384Mi }
+            limits: { cpu: "1", memory: 1Gi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false   # LibreOffice writes temp files
+            capabilities: { drop: ["ALL"] }
+            runAsNonRoot: true
+            runAsUser: 1000
+            seccompProfile:
+              type: RuntimeDefault
+        # CORP proxy: carbone-ee sets Cross-Origin-Resource-Policy: same-origin, which blocks
+        # loading the embedded Studio JS into Odoo cross-origin. This sidecar rewrites CORP to
+        # cross-origin. The Service targets this sidecar (port 8080), which proxies to carbone:4000.
+        - name: corp-proxy
+          image: docker.io/nginxinc/nginx-unprivileged:1.27-alpine
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - name: corp-proxy-conf
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+              readOnly: true
+          readinessProbe:
+            tcpSocket: { port: http }
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests: { cpu: 20m, memory: 32Mi }
+            limits: { cpu: 200m, memory: 128Mi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: false
+            capabilities: { drop: ["ALL"] }
+            runAsNonRoot: true
+            runAsUser: 101
+            seccompProfile:
+              type: RuntimeDefault
+      volumes:
+        - name: corp-proxy-conf
+          configMap:
+            name: carbone-corp-proxy
+        - name: data
+          persistentVolumeClaim:
+            claimName: carbone-data
+        - name: keys
+          secret:
+            secretName: carbone-keys
+            defaultMode: 0444   # secret files are root:root -> 0444 so uid 1000 can read
+        - name: render
+          emptyDir:
+            sizeLimit: 1Gi

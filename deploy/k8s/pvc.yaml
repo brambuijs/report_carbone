@@ -1,0 +1,16 @@
+# Stateful storage: SQLite DB (template metadata + versioning) + template files.
+# RWO single-pod (Deployment strategy: Recreate).
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: carbone-data
+  labels:
+    app.kubernetes.io/name: carbone
+    app.kubernetes.io/component: doc-renderer
+spec:
+  accessModes:
+    - ReadWriteOnce
+  # storageClassName: <your-rwo-storageclass>   # uncomment/set for your cluster
+  resources:
+    requests:
+      storage: 2Gi
